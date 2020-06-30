@@ -20,16 +20,19 @@ describe('AppComponent', () => {
     expect(app).toBeTruthy();
   });
 
-  it(`should have as title 'user-registration-host'`, () => {
+  it(`should have as title 'User Registration Host'`, () => {
     const fixture = TestBed.createComponent(AppComponent);
     const app = fixture.componentInstance;
-    expect(app.title).toEqual('user-registration-host');
+    expect(app.title).toEqual('User Registration Host');
   });
 
-  it('should render title', () => {
+  it('should render two navigation links in the menu ', () => {
     const fixture = TestBed.createComponent(AppComponent);
     fixture.detectChanges();
     const compiled = fixture.nativeElement;
-    expect(compiled.querySelector('.content span').textContent).toContain('user-registration-host app is running!');
+    expect(compiled.querySelector('#home-link').textContent).toContain('Home');
+    expect(compiled.querySelector('#register-link').textContent).toContain('Register');
   });
+
+
 });

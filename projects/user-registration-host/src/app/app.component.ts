@@ -10,6 +10,7 @@ import { filter } from 'rxjs/operators';
 export class AppComponent {
 
   navbarOpen = false;
+  title = 'User Registration Host'
 
   private readonly closeNavbar = () => this.navbarOpen = false;
   private readonly isNavigationEnd = (event) => event instanceof NavigationEnd;
