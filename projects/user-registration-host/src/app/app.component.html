@@ -1,0 +1,27 @@
+<div class="container-fluid bg-light">
+  <div class="container">
+    <nav class="navbar navbar-expand-md navbar-light bg-light">
+      <a class="navbar-brand" routerLink="">User registration</a>
+
+      <button class="navbar-toggler" type="button" (click)="toggleNavbar()"  data-toggle="collapse" data-target="#navbarSupportedContent"
+        aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse" [ngClass]="{ 'show': navbarOpen }" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto">
+          <li class="nav-item active">
+            <a class="nav-link" routerLink="" routerLinkActive="active">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" routerLink="registration" routerLinkActive="active">Register</a>
+          </li>
+        </ul>
+      </div>
+    </nav>
+  </div>
+</div>
+
+<div class="container">
+  <router-outlet></router-outlet>
+</div>

@@ -1,0 +1,57 @@
+<form [formGroup]="registrationForm"  (ngSubmit)="onSubmit()"  (ngReset)="onReset()">
+
+  <div class="form-group row">
+    <label for="firstName" class="col-sm-2 col-form-label">First name</label>
+    <div class="col-sm-10 col-md-6">
+      <input formControlName="firstName" id="firstName" placeholder="Your first name" type="string"
+        class="form-control">
+      <div class="bg-warning rounded mt-1 p-1 smaller" *ngIf="firstName.errors && (firstName.dirty || firstName.touched)">
+        <ul class="mb-0"><li>First name is a required field</li></ul>
+      </div>
+    </div>
+  </div>
+
+  <div class="form-group row">
+    <label for="lastName" class="col-sm-2 col-form-label">Last name</label>
+    <div class="col-sm-10 col-md-6">
+      <input formControlName="lastName" id="lastName" placeholder="Your last name" type="string" class="form-control">
+      <div class="bg-warning rounded mt-1 p-1 smaller" *ngIf="lastName.errors && (lastName.dirty || lastName.touched)">
+        <ul class="mb-0"><li>Last name is a required field</li></ul>
+      </div>
+    </div>
+  </div>
+
+  <div class="form-group row">
+    <label for="email" class="col-sm-2 col-form-label">Email</label>
+    <div class="col-sm-10 col-md-6">
+      <input formControlName="email" id="email" placeholder="Your email address" type="email" class="form-control">
+      <div class="bg-warning rounded mt-1 p-1 smaller" *ngIf="email.errors && (email.dirty || email.touched)">
+        <ul class="mb-0">
+          <li *ngIf="email.errors.email">The email should be a valid address</li>
+          <li *ngIf="email.errors.required">Email address is a required field</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <div class="form-group row">
+    <label for="password" class="col-sm-2 col-form-label">Password</label>
+    <div class="col-sm-10 col-md-6">
+      <input formControlName="password" id="password" placeholder="Your password" type="password" class="form-control">
+      <div class="bg-warning rounded mt-1 p-1 smaller" *ngIf="registrationForm.errors || (password.errors && (password.dirty || password.touched)) ">
+        <ul class="mb-0">
+          <li *ngIf="password.errors?.required">Password is a required field</li>
+          <li *ngIf="password.errors?.passwordLowercaseUpperCase">The password should contain uppercase and lowercase letters</li>
+          <li *ngIf="password.errors?.passwordLength">The minimum password length is 8</li>
+          <li *ngIf="registrationForm.errors?.passwordNoName">The password should not contain first name or last name</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <button class="btn btn-primary mr-2" type="submit" [disabled]="!registrationForm.valid">Submit</button>
+  <button class="btn btn-secondary" type="reset" >Reset</button>
+
+</form>
+
+

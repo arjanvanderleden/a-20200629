@@ -1,0 +1,25 @@
+<div class="container">
+    <h2>Please register</h2>
+    <p>
+        You can register by entering your first name, last name and a valid email address.<br />
+        Also provide a password with a minimum length of 8 characters, containing upper case and lowercase
+        letters.<br />
+        Remember, using your name in your password is not considered save.
+    </p>
+    <div class="row mb-4 mt-4">
+        <div class="col-sm-12 col-md-2"></div>
+        <div class="col-sm-12 col-md-6">
+            <div class="bg-success text-white rounded mt-1 p-1 smaller" *ngIf="error">
+                <ul class="mb-0">
+                    <li>{{ error }}</li>
+                </ul>
+            </div>
+            <div class="bg-success text-white rounded mt-1 p-1 smaller" *ngIf="message">
+                <ul class="mb-0">
+                    <li>{{ message }}</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <ur-user-registration-form (submitted)="onSubmit($event)"></ur-user-registration-form>
+</div>
