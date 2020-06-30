@@ -17,7 +17,7 @@ Using of this module is possible by either:
 - importing the package directly by means of the public api. This method is used in the hosting application by a single import file `ur-import` for centralized access. When developing the library and using the host application as a development tool, this method does not require much manual work: `ng server` allows both projects to be worked on
 
 ### User Registration Host Application
-The (rote enabled) host application is responsible for hosting the user registration form component and posting the values on submission of the form. Validation of registration is no concern of this application
+The (route enabled) host application is responsible for hosting the user registration form component and posting the values on submission of the form. Validation of registration data is no concern of this application
 
 
 ### Peer dependencies
