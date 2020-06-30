@@ -11,7 +11,7 @@ import { tap, catchError, map } from 'rxjs/operators';
 })
 export class ApiService {
 
-    private baseURl: string = environment.apiUrl;
+    readonly baseURl: string = environment.apiUrl;
 
     constructor(private http: HttpClient) { }
 
