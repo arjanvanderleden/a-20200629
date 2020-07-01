@@ -4,7 +4,7 @@ import { UserRegistrationPageComponent } from './user-registration-page.componen
 import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from '../../../app-routing.module';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
-import { UserRegistrationModule } from 'user-registration';
+import { UserRegistrationModule } from '../../../../ur-import';
 import { HttpClientModule } from '@angular/common/http';
 
 describe('UserRegistrationPageComponent', () => {
