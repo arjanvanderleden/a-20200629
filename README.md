@@ -36,7 +36,9 @@ The Library uses ng-bootstrap as UI frame work and requires all hosting applicat
 ## Tests
 `$> ng test` will run the test for the library
 
-`$> ng test user-registration-host` will run the test for the hosting application
+`$> ng test user-registration-host` will run the test for the hosting project
+
+`$> ng e2e --port 4300` will run the integration test both projects
 
 ## Email address validation
 The library uses the angular provided `Validators.email` that implements the whatwg.org specification found [here](https://html.spec.whatwg.org/multipage/input.html#valid-e-mail-address). This specification conforms more to common found email addresses then the [RFC 5322](https://tools.ietf.org/html/rfc5322#page-17) spec. which is geared more at technical correctness.
