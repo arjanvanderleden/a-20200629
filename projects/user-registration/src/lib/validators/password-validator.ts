@@ -1,16 +1,16 @@
 import { Injectable } from '@angular/core';
 import { FormGroup, ValidatorFn, ValidationErrors, AbstractControl } from '@angular/forms';
 
+const isEmpty = (value: string | undefined | null) => value === undefined || value === null || value === ''
+
 @Injectable({ providedIn: 'root' })
 export class PasswordValidator {
 
   static doesNotContainName(): ValidatorFn {
 
     const doesNotContain = (container: string | null, included: string | null) =>
-      container === '' ||
-      container === null ||
-      included === '' ||
-      included === null ||
+      isEmpty(container)||
+      isEmpty(included) ||
       container.toLocaleLowerCase().indexOf(included.toLocaleLowerCase()) === -1;
 
     return (formGroup: FormGroup) => {
@@ -30,8 +30,7 @@ export class PasswordValidator {
   static hasLength = (miniumLength: number) => (control: AbstractControl) => {
 
     const value = control.value;
-    const isValid = value === null ||
-      value === '' ||
+    const isValid = isEmpty(value) ||
       (typeof value === 'string' && value.length >= miniumLength);
 
     return isValid ? null : {
@@ -42,7 +41,7 @@ export class PasswordValidator {
 
   static hasLowerCaseAndUpperCase = () => (control: AbstractControl) => {
 
-    const isMatch = (regex: RegExp, stringValue: string | null) => stringValue === null || stringValue === '' || regex.test(stringValue)
+    const isMatch = (regex: RegExp, stringValue: string | null | undefined) => isEmpty(stringValue) || regex.test(stringValue)
 
     const value = control.value;
     const isValid = isMatch(/[a-z]/, value) && isMatch(/[A-Z]/, value);

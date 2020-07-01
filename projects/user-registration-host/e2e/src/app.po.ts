@@ -1,11 +1,26 @@
 import { browser, by, element } from 'protractor';
 
 export class AppPage {
-  navigateTo(): Promise<unknown> {
+  navigateToHome(): Promise<unknown> {
     return browser.get(browser.baseUrl) as Promise<unknown>;
   }
 
-  getTitleText(): Promise<string> {
-    return element(by.css('app-root .content span')).getText() as Promise<string>;
+  getHomePageInstruction(): Promise<string> {
+    return element(by.tagName('p')).getText() as Promise<string>;
   }
+
+  navigateToRegistration(): Promise<unknown> {
+    return browser.get(`${browser.baseUrl}/registration`) as Promise<unknown>;
+  }
+
+  getRegistrationPageTitle(): Promise<string> {
+    return element(by.tagName('h2')).getText() as Promise<string>;
+  }
+
+  getRegistrationForm() {
+    return element(by.tagName('form')).isPresent();
+  }
+
+
+
 }

@@ -1,9 +1,7 @@
 import { TestBed } from '@angular/core/testing';
 
 import { PasswordValidator } from './password-validator';
-import { FormGroup, FormBuilder, ValidatorFn } from '@angular/forms';
-
-
+import { FormGroup, FormBuilder, ValidatorFn, FormControl } from '@angular/forms';
 
 describe('Registration form Validators', () => {
 
@@ -69,21 +67,62 @@ describe('Registration form Validators', () => {
     describe("hasLength", () => {
 
         let validator: ValidatorFn;
+        let formControl: FormControl;
 
         beforeEach(() => {
-
+            formControl = new FormControl();
         })
 
-        it('should not validate value = empty', () => {
+        it('should validate an empty value', () => {
+            formControl.setValue('');
+            const result = PasswordValidator.hasLength(8)(formControl);
+            expect(result).toBe(null);
+        })
 
+        it('should not validate value with length 7', () => {
+            formControl.setValue('1234567')
+            const result = PasswordValidator.hasLength(8)(formControl);
+            expect(result).toEqual(jasmine.objectContaining({passwordLength: true}));
+        })
+
+        it('should validate value with length 8', () => {
+            formControl.setValue('12345678')
+            const result = PasswordValidator.hasLength(8)(formControl);
+            expect(result).toBe(null);
         })
     })
 
     describe("hasLowerCaseAndUpperCase", () => {
+        let validator: ValidatorFn;
+        let formControl: FormControl;
 
+        beforeEach(() => {
+            formControl = new FormControl();
+        })
+
+        it('should validate an empty value', () => {
+            formControl.setValue('');
+            const result = PasswordValidator.hasLowerCaseAndUpperCase()(formControl);
+            expect(result).toBe(null);
+        })
+
+        it('should not validate value without lower case', () => {
+            formControl.setValue('!@#%^&123SDF')
+            const result = PasswordValidator.hasLowerCaseAndUpperCase()(formControl);
+            expect(result).toEqual(jasmine.objectContaining({passwordLowercaseUpperCase: true}));
+        })
+
+        it('should not validate value without uppercase case', () => {
+            formControl.setValue('!@#%^&123sdf')
+            const result = PasswordValidator.hasLowerCaseAndUpperCase()(formControl);
+            expect(result).toEqual(jasmine.objectContaining({passwordLowercaseUpperCase: true}));
+        })
+
+        it('should validate value with lowercase and upper case', () => {
+            formControl.setValue('!@#%^&123SDFsdf')
+            const result = PasswordValidator.hasLowerCaseAndUpperCase()(formControl);
+            expect(result).toBe(null);
+        })
     })
-
-
-
 
 });

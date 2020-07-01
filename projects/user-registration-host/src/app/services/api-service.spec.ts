@@ -48,7 +48,7 @@ describe('Api service', () => {
 
               const req = httpTestingController.expectOne(apiService.baseURl);
               expect(req.request.method).toEqual('POST');
-              req.flush(void 0);
+              req.flush(0);
         })
 
         it("should result in false when the api url is wrong", () => {
